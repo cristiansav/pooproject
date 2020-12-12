@@ -17,4 +17,5 @@ int main()
 
 	WordManipulation WordManipulationService;
 	WordManipulationService.ManagementCommands(Db, line);
+	cout << "salut";
 }
