@@ -1,0 +1,9 @@
+﻿  OOP Project.cpp
+C:\Users\crist\source\repos\OOP Project\Classes.h(340,29): warning C4018: '<': signed/unsigned mismatch
+C:\Users\crist\source\repos\OOP Project\Classes.h(353,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\crist\source\repos\OOP Project\Classes.h(373,12): warning C4018: '<': signed/unsigned mismatch
+C:\Users\crist\source\repos\OOP Project\Classes.h(397,35): warning C4018: '<=': signed/unsigned mismatch
+C:\Users\crist\source\repos\OOP Project\Classes.h(467,12): warning C4018: '<': signed/unsigned mismatch
+C:\Users\crist\source\repos\OOP Project\Classes.h(485,12): warning C4018: '<': signed/unsigned mismatch
+C:\Users\crist\source\repos\OOP Project\Classes.h(512,12): warning C4018: '<': signed/unsigned mismatch
+  OOP Project.vcxproj -> C:\Users\crist\source\repos\OOP Project\Debug\OOP Project.exe
