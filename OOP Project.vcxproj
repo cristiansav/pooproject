@@ -143,7 +143,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Classes.h" />
+    <ClInclude Include="DB.h" />
+    <ClInclude Include="Enums.h" />
     <ClInclude Include="OOP Project.h" />
+    <ClInclude Include="Word_Manipulation.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

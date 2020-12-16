@@ -26,5 +26,14 @@
     <ClInclude Include="OOP Project.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Enums.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DB.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Word_Manipulation.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

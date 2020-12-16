@@ -1,0 +1,1 @@
+column_1,string,20,''

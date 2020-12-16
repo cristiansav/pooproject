@@ -1,2 +1,4 @@
 C:\Users\crist\source\repos\OOP Project\Debug\OOP Project.exe
 C:\Users\crist\source\repos\OOP Project\Debug\OOP Project.pdb
+D:\Projects\Programming\pooproject\Debug\OOP Project.exe
+D:\Projects\Programming\pooproject\Debug\OOP Project.pdb

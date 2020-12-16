@@ -1,9 +1,32 @@
 ﻿  OOP Project.cpp
-C:\Users\crist\source\repos\OOP Project\Classes.h(340,29): warning C4018: '<': signed/unsigned mismatch
-C:\Users\crist\source\repos\OOP Project\Classes.h(353,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\crist\source\repos\OOP Project\Classes.h(373,12): warning C4018: '<': signed/unsigned mismatch
-C:\Users\crist\source\repos\OOP Project\Classes.h(397,35): warning C4018: '<=': signed/unsigned mismatch
-C:\Users\crist\source\repos\OOP Project\Classes.h(467,12): warning C4018: '<': signed/unsigned mismatch
-C:\Users\crist\source\repos\OOP Project\Classes.h(485,12): warning C4018: '<': signed/unsigned mismatch
-C:\Users\crist\source\repos\OOP Project\Classes.h(512,12): warning C4018: '<': signed/unsigned mismatch
-  OOP Project.vcxproj -> C:\Users\crist\source\repos\OOP Project\Debug\OOP Project.exe
+D:\Projects\Programming\pooproject\Enums.h(37,44): error C2061: syntax error: identifier 'string'
+D:\Projects\Programming\pooproject\Enums.h(50,44): error C2061: syntax error: identifier 'string'
+D:\Projects\Programming\pooproject\Enums.h(67,40): error C2061: syntax error: identifier 'string'
+D:\Projects\Programming\pooproject\Enums.h(84,49): error C2061: syntax error: identifier 'string'
+D:\Projects\Programming\pooproject\Enums.h(39,7): error C2065: 'condition': undeclared identifier
+D:\Projects\Programming\pooproject\Enums.h(43,12): error C2065: 'condition': undeclared identifier
+D:\Projects\Programming\pooproject\Enums.h(52,7): error C2065: 'type': undeclared identifier
+D:\Projects\Programming\pooproject\Enums.h(56,12): error C2065: 'type': undeclared identifier
+D:\Projects\Programming\pooproject\Enums.h(60,12): error C2065: 'type': undeclared identifier
+D:\Projects\Programming\pooproject\Enums.h(69,7): error C2065: 'command': undeclared identifier
+D:\Projects\Programming\pooproject\Enums.h(73,12): error C2065: 'command': undeclared identifier
+D:\Projects\Programming\pooproject\Enums.h(77,12): error C2065: 'command': undeclared identifier
+D:\Projects\Programming\pooproject\Enums.h(86,7): error C2065: 'identifier': undeclared identifier
+D:\Projects\Programming\pooproject\Enums.h(90,12): error C2065: 'identifier': undeclared identifier
+D:\Projects\Programming\pooproject\Word_Manipulation.h(107,29): warning C4018: '<': signed/unsigned mismatch
+D:\Projects\Programming\pooproject\Word_Manipulation.h(120,21): warning C4018: '<': signed/unsigned mismatch
+D:\Projects\Programming\pooproject\Word_Manipulation.h(140,12): warning C4018: '<': signed/unsigned mismatch
+D:\Projects\Programming\pooproject\Word_Manipulation.h(164,35): warning C4018: '<=': signed/unsigned mismatch
+D:\Projects\Programming\pooproject\Word_Manipulation.h(175,1): error C2660: 'ReturnType::getColumnDataType': function does not take 1 arguments
+D:\Projects\Programming\pooproject\Enums.h(50,19): message : see declaration of 'ReturnType::getColumnDataType'
+D:\Projects\Programming\pooproject\Word_Manipulation.h(234,12): warning C4018: '<': signed/unsigned mismatch
+D:\Projects\Programming\pooproject\Word_Manipulation.h(252,12): warning C4018: '<': signed/unsigned mismatch
+D:\Projects\Programming\pooproject\Word_Manipulation.h(279,12): warning C4018: '<': signed/unsigned mismatch
+D:\Projects\Programming\pooproject\DB.h(162,1): error C2660: 'ReturnType::getCommandType': function does not take 1 arguments
+D:\Projects\Programming\pooproject\Enums.h(67,18): message : see declaration of 'ReturnType::getCommandType'
+D:\Projects\Programming\pooproject\DB.h(167,1): error C2660: 'ReturnType::getCommandIdentifier': function does not take 1 arguments
+D:\Projects\Programming\pooproject\Enums.h(84,21): message : see declaration of 'ReturnType::getCommandIdentifier'
+D:\Projects\Programming\pooproject\DB.h(177,1): error C2660: 'ReturnType::getConditionType': function does not take 1 arguments
+D:\Projects\Programming\pooproject\Enums.h(37,20): message : see declaration of 'ReturnType::getConditionType'
+D:\Projects\Programming\pooproject\DB.h(263,1): error C2660: 'ReturnType::getConditionType': function does not take 1 arguments
+D:\Projects\Programming\pooproject\Enums.h(37,20): message : see declaration of 'ReturnType::getConditionType'

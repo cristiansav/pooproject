@@ -1,0 +1,2 @@
+D:\Projects\Programming\pooproject\x64\Debug\OOP Project.exe
+D:\Projects\Programming\pooproject\x64\Debug\OOP Project.pdb

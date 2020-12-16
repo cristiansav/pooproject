@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string.h>
-#include "Classes.h"
+#include "Enums.h"
+#include "DB.h"
 
 using namespace std;
 
@@ -15,7 +16,5 @@ int main()
 	cout << "Please input the full SQL command..." << '\n';
 	getline(cin, line);
 
-	WordManipulation WordManipulationService;
-	WordManipulationService.ManagementCommands(Db, line);
-	cout << "salut";
+	Db.ManagementCommands(Db, line);
 }
