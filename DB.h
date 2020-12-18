@@ -155,7 +155,103 @@ public:
 	{
 		WordManipulation WordManipulationService;
 
-		StringDictionary commandStringArray = WordManipulationService.separateFirstWord(line);
+		StringDictionary commandDictionary = WordManipulationService.separateFirstWord(line);
+		if (commandDictionary.isValidated)
+		{
+			switch (ReturnType::getCommandType(commandDictionary.firstWord))
+			{
+			case Commands::CREATE:
+				if (commandDictionary.restOfTheLine.substr(0, 2) == "IF")
+				{
+					// 1. Separate condition
+					StringDictionary conditionDictionary = WordManipulationService.separateCondition(commandDictionary.restOfTheLine);
+					// 2. Validate condition
+					if (conditionDictionary.isValidated && ReturnType::getConditionType(conditionDictionary.firstWord) == Conditions::IFNOTEXISTS)
+					{
+						// 3. Separate identifier
+						StringDictionary identifierDictionary = WordManipulationService.separateFirstWord(conditionDictionary.restOfTheLine);
+						// 4. Validate identifier
+						if (identifierDictionary.isValidated)
+						{
+							if (ReturnType::getCommandIdentifier(identifierDictionary.firstWord) == Identifiers::INDEX)
+							{
+								// 5. Separate index name
+								StringDictionary indexDictionary = WordManipulationService.separateFirstWord(identifierDictionary.restOfTheLine);
+								// 6. Validate index and check for existing index with the same name
+								if (indexDictionary.isValidated && !IndexExists(indexDictionary.firstWord))
+								{
+									// 7. Check if "ON" separator exists
+									if (indexDictionary.restOfTheLine.substr(0, 2) == "ON")
+									{
+										// 8. Separate "ON"
+										StringDictionary onDictionary = WordManipulationService.separateFirstWord(indexDictionary.restOfTheLine);
+										// 9. Validate "ON"
+										if (onDictionary.isValidated)
+										{
+											// 10. Separate table name
+											StringDictionary tableDictionary = WordManipulationService.separateFirstWord(onDictionary.restOfTheLine);
+											// 11. Validate table name
+											if (tableDictionary.isValidated)
+											{
+												// 12. Separate column name
+												StringDictionary columnDictionary = WordManipulationService.separateFirstWord
+											}
+										}
+									}
+								}
+							}
+							else if (ReturnType::getCommandIdentifier(identifierDictionary.firstWord) == Identifiers::TABLE)
+							{
+								// 5. Separate table name
+								StringDictionary tableDictionary = WordManipulationService.separateFirstWord(identifierDictionary.restOfTheLine);
+								// 6. Validate table
+
+							}
+							else
+							{
+								// Identifier is invalid
+							}
+						}
+						else
+						{
+							// Identifier synthax is invalid
+						}
+					}
+					else
+					{
+						// Condition is invalid
+					}
+				}
+				else
+				{
+					// 1. Get identifier
+
+					// 2. Separate condition if it exists
+
+				}
+				break;
+			case Commands::DISPLAY:
+				//
+				break;
+			case Commands::DROP:
+				//
+				break;
+			default:
+				break;
+			}
+		}
+
+
+
+
+
+
+
+
+
+
+
+
 
 		if (commandStringArray.isValidated == true)
 		{
