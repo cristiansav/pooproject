@@ -193,9 +193,8 @@ public:
 							{
 								if (type != DataTypes::INVALID)
 								{
-
-									/*customColumnArrays = new CustomColumnArray(name, type, dimension, line.substr(i, j - i), true);
-									customColumnArrays++;*/
+									// Append column
+									
 									cout << "Column: " + name << '\n';
 									cout << "Type: " + typeString << '\n';
 									cout << "Dimension: " + dimensionString << '\n';
