@@ -191,10 +191,12 @@ public:
 											// 10. Separate table name
 											StringDictionary tableDictionary = WordManipulationService.separateFirstWord(onDictionary.restOfTheLine);
 											// 11. Validate table name
-											if (tableDictionary.isValidated)
+											if (tableDictionary.isValidated && TableExists(tableDictionary.firstWord))
 											{
-												// 12. Separate column name
-												StringDictionary columnDictionary = WordManipulationService.separateFirstWord
+												// 12. Get table's number of columns if the table exists
+
+												// 13. Separate column/columns 
+												StringDictionary columnsDictionary = WordManipulationService.separateLastWord(tableDictionary.restOfTheLine);
 											}
 										}
 									}

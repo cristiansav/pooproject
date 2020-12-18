@@ -292,4 +292,12 @@ public:
 		}
 		return customStringArray;
 	}
+
+	bool isList(string line)
+	{
+		for (int i = 0; i <= line.length(); i++)
+			if (line[i] == ',')
+				return true;
+		return false;
+	}
 };
