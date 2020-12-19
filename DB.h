@@ -100,16 +100,6 @@ public:
 		this->Indexes = new Index();
 	}
 
-	bool TableExists(string table)
-	{
-		for (int i = 0; i < Table::noTables; i++)
-		{
-			if (Tables[i].Name == table)
-				return true;
-		}
-		return false;
-	}
-
 	bool IndexExists(string index)
 	{
 		for (int i = 0; i < Table::noTables; i++)
@@ -120,7 +110,29 @@ public:
 		return false;
 	}
 
-	void CreateTable(string tableName, ColumnDictionary* customColumnArrays)
+	bool TableExists(string table)
+	{
+		fstream tableFile("Table_" + table + ".txt", ios::_Nocreate);
+		if (tableFile)
+		{
+			return true;
+		}
+		return false;
+	}
+
+	int getTableColumns(string table)
+	{
+		fstream tableFile("Table_" + table + ".txt", ios::in);
+		string tableNameFromFile;
+		int noColumns;
+
+		tableFile >> tableNameFromFile;
+		tableFile >> noColumns;
+
+		return noColumns;
+	}
+
+	void CreateTable(string tableName, ColumnArray* customColumnArrays)
 	{
 		cout << "Table " + tableName + " was successfully created!";
 		cout << customColumnArrays[0].name;
@@ -194,8 +206,8 @@ public:
 											// 11. Validate table name
 											if (tableDictionary.isValidated && TableExists(tableDictionary.firstWord))
 											{
-												// 12. Get table's number of columns if the table exists
-
+												// 12. Get table's number of columns
+												int noColumns = getTableColumns(tableDictionary.firstWord);
 												// 13. Check if index has one or more columns
 												if (WordManipulationService.isList(tableDictionary.restOfTheLine))
 												{
@@ -248,8 +260,37 @@ public:
 										fstream tableWrite("Table_" + tableDictionary.firstWord + ".txt", ios::app);
 										tableWrite.seekg(0, ios::end);
 										tableWrite << tableDictionary.firstWord << '\n';
+										tableWrite << noColumns - 1 << '\n';
 										// 9. Append every column that is valid to the .txt file that was previously generated
-
+										ColumnArrayAndStringDictionary ColumnAndRofL = WordManipulationService.separateParantheses(tableDictionary.restOfTheLine.substr(1, tableDictionary.restOfTheLine.length()-2));
+										for (int i = 0; i < noColumns - 1; i++)
+										{
+											tableWrite << ColumnAndRofL.columnArray.name << "," << ReturnType::getColumnDataTypeString(ColumnAndRofL.columnArray.type) << "," << ColumnAndRofL.columnArray.dimension << ",";
+											switch (ColumnAndRofL.columnArray.type)
+											{
+											case DataTypes::FLOAT:
+											{
+												tableWrite << ColumnAndRofL.columnArray.defaultFloatValue << '\n';
+												break;
+											}
+											case DataTypes::INTEGER:
+											{
+												tableWrite << ColumnAndRofL.columnArray.defaultIntegerValue << '\n';
+												break;
+											}
+											case DataTypes::TEXT:
+											{
+												tableWrite << ColumnAndRofL.columnArray.defaultTextValue << '\n';
+												break;
+											}
+											}
+											if (i != noColumns - 2)
+											{
+												ColumnAndRofL = WordManipulationService.separateParantheses(ColumnAndRofL.RofL);
+											}
+										}
+										
+										
 									}
 									else if (noColumns == 1)
 									{

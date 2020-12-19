@@ -1,0 +1,8 @@
+ELEVI
+6
+nume,text,20,'Popescu'
+varsta,integer,3,0
+medie,float,20,9.092
+dioptrie,float,4,0.5
+geaca,text,20,'Alba'
+arma,text,20,'9mm'

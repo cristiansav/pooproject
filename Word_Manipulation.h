@@ -26,7 +26,7 @@ public:
 	}
 };
 
-class ColumnDictionary
+class ColumnArray
 {
 public:
 	bool isValidated;
@@ -38,7 +38,7 @@ public:
 	string defaultTextValue = "";
 
 public:
-	ColumnDictionary()
+	ColumnArray()
 	{
 		this->defaultIntegerValue = 0;
 		this->defaultFloatValue = 0;
@@ -48,7 +48,7 @@ public:
 		this->name = "";
 		this->isValidated = false;
 	}
-	ColumnDictionary(string name, DataTypes type, int dimension, string defaultValue, bool validated)
+	ColumnArray(string name, DataTypes type, int dimension, string defaultValue, bool validated)
 	{
 		this->name = name;
 		this->type = type;
@@ -62,7 +62,7 @@ public:
 		else if (type == DataTypes::FLOAT)
 			this->defaultFloatValue = stof(defaultValue);
 	}
-	ColumnDictionary(const ColumnDictionary& columnArray)
+	ColumnArray(const ColumnArray& columnArray)
 	{
 		this->isValidated = columnArray.isValidated;
 		this->defaultIntegerValue = columnArray.defaultIntegerValue;
@@ -72,7 +72,7 @@ public:
 		this->type = columnArray.type;
 		this->name = columnArray.name;
 	}
-	void operator=(const ColumnDictionary& columnArray)
+	void operator=(const ColumnArray& columnArray)
 	{
 		if (this == &columnArray) {
 			return;
@@ -88,11 +88,23 @@ public:
 	friend class WordManipulation;
 };
 
-class WordManipulation
+class ColumnArrayAndStringDictionary
 {
 public:
-	ColumnDictionary* customColumnArrays; // (column_1,integer,20,0),(column_2,text,40,'')
+	ColumnArray columnArray;
+	string RofL;
 
+// Constructors
+public:
+	ColumnArrayAndStringDictionary(ColumnArray colArray, string text)
+	{
+		this->columnArray = colArray;
+		this->RofL = text;
+	}
+};
+
+class WordManipulation
+{
 public:
 	bool isNumber(char c)
 	{
@@ -130,93 +142,82 @@ public:
 		return leftParantheses;
 	}
 
-	void separateParantheses(string line)
+	ColumnArrayAndStringDictionary separateParantheses(string line)
 	{
-		int curColumn = 0;
-		int noColumns = getNoColumns(line);
-		int i = 0, m = 0;
-		/*if (customColumnArrays != nullptr)
-			delete[] customColumnArrays;*/
-		while (i < line.length())
+		ColumnArray column = ColumnArray();
+		int lastCommaPosition = 0;
+		int noCommas = 0, i = 1;
+
+		// Verify that the first character is a '('
+
+		// Stop at ')' and check if next character is a comma
+
+		// Return the
+
+		while (noCommas < 3 && i < line.length() && line[i] != ')')
 		{
-			if (line[i] != ',' && i > 0)
+			if (line[i] != ',')
 			{
-				return;
+				i++;
 			}
 			else
 			{
-				if (line[i] == ',') i++;
-				if (i != line.length())
+				switch (noCommas)
 				{
-					if (line[i] != 32)
-					{
-						if (line[i] == '(')
-						{
-							string name;
-							DataTypes type;
-							string typeString;
-							string dimensionString;
-							int dimension;
-
-							int noCommas = 0;
-							i++;
-							int j = i;
-							while (line[j] != ')' && j <= line.length())
-							{
-								if (line[j] == ',')
-								{
-									if (noCommas == 0)
-									{
-										name = line.substr(i, j - i);
-									}
-									else if (noCommas == 1)
-									{
-										typeString = line.substr(i, j - i);
-										type = ReturnType::getColumnDataType(line.substr(i, j - i));
-									}
-									else if (noCommas == 2)
-									{
-										dimensionString = line.substr(i, j - i);
-										dimension = stoi(line.substr(i, j - i));
-									}
-									i = j + 1;
-									j = i;
-									noCommas++;
-								}
-								else
-								{
-									j++;
-								}
-
-							}
-							if (line[j] == ')' && noCommas == 3)
-							{
-								if (type != DataTypes::INVALID)
-								{
-									// Append column
-									
-									cout << "Column: " + name << '\n';
-									cout << "Type: " + typeString << '\n';
-									cout << "Dimension: " + dimensionString << '\n';
-									cout << "Default value: " + line.substr(i, j - i) + '\n';
-									cout << '\n';
-								}
-
-								else return;
-							}
-							curColumn++;
-							i = j;
-						}
-					}
-					else
-					{
-						return;
-					}
-					i++;
+				case 0:
+				{
+					// Set the column name
+					column.name = line.substr(1, i-1);
+					break;
 				}
+				case 1:
+				{
+					// Set the column type
+					column.type = ReturnType::getColumnDataType(line.substr(lastCommaPosition + 1, i - lastCommaPosition - 1));
+					break;
+				}
+				case 2:
+				{
+					// Set the column dimension
+					column.dimension = stoi(line.substr(lastCommaPosition + 1, i - lastCommaPosition - 1));
+					break;
+				}
+				}
+				noCommas++;
+				lastCommaPosition = i;
+				i++;
 			}
 		}
-		customColumnArrays -= noColumns;
+		if (noCommas == 3 && i < line.length())
+		{
+			while (line[i] != ')' && i < line.length())
+			{
+				i++;
+			}
+			switch (column.type)
+			{
+			case DataTypes::FLOAT:
+			{
+				column.defaultFloatValue = stof(line.substr(lastCommaPosition + 1, i - lastCommaPosition - 1));
+				column.isValidated = true;
+				break;
+			}
+			case DataTypes::INTEGER:
+			{
+				column.defaultIntegerValue = stoi(line.substr(lastCommaPosition + 1, i - lastCommaPosition - 1));
+				column.isValidated = true;
+				break;
+			}
+			case DataTypes::TEXT:
+				column.defaultTextValue = line.substr(lastCommaPosition + 1, i - lastCommaPosition - 1);
+				if (column.defaultTextValue[0] == 39 && column.defaultTextValue[column.defaultTextValue.length() - 1] == 39)
+					column.isValidated = true;
+				break;
+			}
+		}
+		if (getNoColumns(line) == 1)
+			return ColumnArrayAndStringDictionary(column, "");
+		return ColumnArrayAndStringDictionary(column,line.substr(i + 2, line.length() - i + lastCommaPosition));
 	}
 
 	StringDictionary separateFirstWord(string line)

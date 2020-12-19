@@ -95,4 +95,64 @@ public:
 		}
 		return Identifiers::INVALID;
 	}
+
+	static string getConditionTypeString(Conditions condition)
+	{
+		if (condition == Conditions::IFNOTEXISTS)
+		{
+			return "IF NOT EXISTS";
+		}
+		else if (condition == Conditions::WHERE)
+		{
+			return "WHERE";
+		}
+		return "INVALID";
+	}
+
+	static string getColumnDataTypeString(DataTypes type)
+	{
+		if (type == DataTypes::FLOAT)
+		{
+			return "float";
+		}
+		else if (type == DataTypes::INTEGER)
+		{
+			return "integer";
+		}
+		else if (type == DataTypes::TEXT)
+		{
+			return "text";
+		}
+		return "INVALID";
+	}
+
+	static string getCommandTypeString(Commands command)
+	{
+		if (command == Commands::CREATE)
+		{
+			return "CREATE";
+		}
+		else if (command == Commands::DROP)
+		{
+			return "DROP";
+		}
+		else if (command == Commands::DISPLAY)
+		{
+			return "DISPLAY";
+		}
+		return "INVALID";
+	}
+
+	static string getCommandIdentifierString(Identifiers identifier)
+	{
+		if (identifier == Identifiers::TABLE)
+		{
+			return "TABLE";
+		}
+		else if (identifier == Identifiers::INDEX)
+		{
+			return "INDEX";
+		}
+		return "INVALID";
+	}
 };
